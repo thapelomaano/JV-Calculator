@@ -1,0 +1,54 @@
+﻿@model JVCalculator.Models.JVCalculatorModel
+
+<h2>JV Calculator Input</h2>
+
+<form asp-action="Calculate" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Turnover Y1</th>
+                <th>Year1</th>
+                <th>Turnover Y2</th>
+                <th>Year2</th>
+                <th>Grading</th>
+                <th>Capital</th>
+                <th>Lead?</th>
+                <th>Active?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 3; i++)
+            {
+                <tr>
+                    <td><input name="Partners[@i].Company" class="form-control" /></td>
+                    <td><input name="Partners[@i].TurnoverYear1" type="number" class="form-control" /></td>
+                    <td><input name="Partners[@i].Year1" type="number" class="form-control" /></td>
+                    <td><input name="Partners[@i].TurnoverYear2" type="number" class="form-control" /></td>
+                    <td><input name="Partners[@i].Year2" type="number" class="form-control" /></td>
+                    <td><input name="Partners[@i].Grading" class="form-control" /></td>
+                    <td><input name="Partners[@i].CapitalContribution" type="number" class="form-control" /></td>
+
+					<td>
+						<input type="checkbox" name="Partners[@i].IsActive" value="true" />
+					</td>
+
+                    <td>
+                        <input type="checkbox" name="Partners[@i].IsLead" value="true" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Check JV Eligibility</button>
+</form>
+
+<hr />
+
+<!-- CSV Upload Form -->
+<h3>Upload Partners CSV</h3>
+<form asp-action="UploadCsv" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv" class="form-control" required />
+    <button type="submit" class="btn btn-success mt-2">Upload CSV</button>
+</form>
