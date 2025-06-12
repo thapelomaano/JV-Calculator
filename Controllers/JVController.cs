@@ -2,21 +2,14 @@
 using JVCalculator.Models;
 using JVCalculator.Services;
 using JVCalculator.Utils;
+using JVCalculator.Interfaces;
 
 namespace JVCalculator.Controllers;
 
-public class JVController : Controller
+public class JVController(JVCalculatorService calculator, IPdfGenerator pdfGenerator) : Controller
 {
-	private readonly JVCalculatorService _calculator;
-    private readonly IPdfGenerator _pdfGenerator;
-
-
-    public JVController(JVCalculatorService calculator, IPdfGenerator pdfGenerator)
-	{
-		_calculator = calculator;
-        _pdfGenerator = pdfGenerator;
-
-    }
+	private readonly JVCalculatorService _calculator = calculator;
+    private readonly IPdfGenerator _pdfGenerator = pdfGenerator;
 
 	public IActionResult Index()
 	{

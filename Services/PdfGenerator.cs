@@ -1,9 +1,11 @@
 ﻿using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using JVCalculator.Interfaces;
 using JVCalculator.Models;
 using System.IO;
 
+namespace JVCalculator.Services;
 public class PdfGenerator : IPdfGenerator
 {
     public byte[] GenerateJVResultPdf(JVCalculatorModel calculatorModel, string result)

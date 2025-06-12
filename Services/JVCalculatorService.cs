@@ -42,7 +42,7 @@ public class JVCalculatorService
 		return "BR_8: The calculated grading and class of work for this JV is Met.";
 	}
 
-	private int GetGradeValue(string grading)
+	private static int GetGradeValue(string grading)
 	{
 		return int.TryParse(grading.Replace("CE", ""), out int grade) ? grade : 0;
 	}
